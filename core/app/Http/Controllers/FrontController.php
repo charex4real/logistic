@@ -31,6 +31,10 @@ class FrontController extends Controller {
         return view('frontend.index', compact('socialList', 'gs', 'serviceList', 'testimonialList'));
     }
 
+     public function map_test() {
+        return view("map-test");
+     }
+
     public function aboutus() {
         $socialList = Social::get();
         $gs = GeneralSetting::first();

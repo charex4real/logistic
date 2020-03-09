@@ -75,10 +75,7 @@
                 </div>
         </div>
    
-  
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s&libraries=places"> 
-  </script>
-    <script src="{{asset('assets/frontend/js/google_map.js')}}"></script>
+
   
 
     <script src="{{asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script>
@@ -118,6 +115,12 @@
     <script src="{{asset('assets/frontend/js/contact.js')}}"></script>
     <!--Main-->
     <script src="{{asset('assets/frontend/js/main.js')}}"></script>
+
+      <!-- Loads up the google google map with places library -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s&libraries=places&callback=initMap"
+        async defer></script>
+
+    <script src="{{asset('assets/frontend/js/google_map.js')}}"></script>
 
 
         <script>

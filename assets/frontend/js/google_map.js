@@ -54,6 +54,7 @@
       //inizialize the map by calling the google.map object 
         var map = new google.maps.Map(document.getElementById('myMap'), map_options);
 
+        // console.log(map,"Map has been called")
         //this responds to click of the button in the prdic area of the map
         $(document).on( "click", "#createmap", function() {
             new AutocompleteDirectionsHandler(map);
@@ -262,7 +263,7 @@
               "crossDomain": true,
               "url": "google",
               "method": "GET",
-              "data":{'link':"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:"+me.originPlaceId+"&destinations=place_id:"+me.destinationPlaceId+"&region=ng&units=metric&key=AIzaSyCQLAPdoU7dhdhdyfgsjjs",
+              "data":{'link':"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:"+me.originPlaceId+"&destinations=place_id:"+me.destinationPlaceId+"&region=ng&units=metric&key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s",
                       'destination_state':me.destinationstate,
                       'origin_state':me.originstate,
                       'origin_location':$('#origin-input').val(),
@@ -335,7 +336,3 @@
                     '</div>';
             return word;
       }
-
-
-      
-initMap();
