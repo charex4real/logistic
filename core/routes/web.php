@@ -239,6 +239,9 @@ Route::group(['middleware' => 'CacheRemover'], function() {
             Route::post('currier/deliver/search', 'CurrierInfoController@showDeliverCurrier');
             //send deliver notification
             Route::get('currier/deliver/notification', 'CurrierInfoController@notifyView')->name('currier.deliver.notify');
+
+            Route::get('currier/deliver/order', 'CurrierInfoController@order')->name('currier.order');
+
             Route::post('currier/deliver/notification', 'CurrierInfoController@findCurrier');
             Route::post('currier/deliiver/notification/send', 'CurrierInfoController@sendNotification')->name('send.notification.currier');
             //Cash Collection Route

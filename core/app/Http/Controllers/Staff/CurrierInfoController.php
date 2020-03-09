@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Model\CurrierInfo;
+use App\Model\Currier;
 use App\Model\CourierType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use App\Model\Branch;
 use Illuminate\Support\Facades\Auth;
 use App\Model\GeneralSetting;
 use App\Model\CurrierProductInfo;
+use App\Model\CurriersProductInfo;
 use Illuminate\Support\Str;
 use App\User;
 use DNS1D;
@@ -203,6 +205,15 @@ class CurrierInfoController extends Controller {
     public function notifyView() {
         return view('staff.deliver.notifyView');
     }
+
+     public function order() {
+
+         $curriers = Currier::all();
+
+        return view('staff.deliver.order', compact('curriers'));
+    }
+
+    
 
     public function findCurrier(Request $request) {
 
