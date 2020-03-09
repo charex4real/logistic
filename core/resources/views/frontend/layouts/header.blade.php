@@ -148,9 +148,12 @@
 #ignismyModal .modal-header{
     border:0px;
 }
-/*-
-      </style>
-          
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map.*/
+     
+
+    </style>
 </head>
 
 <body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">

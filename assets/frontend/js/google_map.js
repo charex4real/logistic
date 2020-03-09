@@ -49,10 +49,14 @@
                     styles: style
                 }
 
-       
+       var map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeControl: false,
+        center: {lat: 5.0165336, lng: 7.9511593},
+        zoom: 13
+      });
 
       //inizialize the map by calling the google.map object 
-        var map = new google.maps.Map(document.getElementById('myMap'), map_options);
+       // var map = new google.maps.Map(document.getElementById('myMap'), map_options);
 
         //this responds to click of the button in the prdic area of the map
         $(document).on( "click", "#createmap", function() {
@@ -156,6 +160,7 @@
           $('#dispalymaperror').html('');
           //the result of the selected place in the dropdown is passed to a place variable
           var place = autocomplete.getPlace();
+
 
           //
           //in the list of states that rideon is functioning. It also tell
@@ -337,5 +342,4 @@
       }
 
 
-      
-initMap();
+  

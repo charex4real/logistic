@@ -8,7 +8,8 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 70%;
+        width: 80%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -81,7 +82,7 @@
 
     <div id="map"></div>
 
-    <script>
+<script>
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script
@@ -111,7 +112,7 @@ function AutocompleteDirectionsHandler(map) {
 
   var originInput = document.getElementById('origin-input');
   var destinationInput = document.getElementById('destination-input');
-  var modeSelector = document.getElementById('mode-selector');
+  var modeSelector ='changemode-driving';// document.getElementById('mode-selector');
 
   var originAutocomplete = new google.maps.places.Autocomplete(originInput);
   // Specify just the place data fields that you need.
