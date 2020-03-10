@@ -152,6 +152,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+         // Ixudra\Curl\CurlServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -202,5 +203,6 @@ return [
         
          'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        // 'Curl'          => Ixudra\Curl\Facades\Curl::class,
     ],
 ];

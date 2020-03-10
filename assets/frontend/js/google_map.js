@@ -17,8 +17,8 @@
         * This one is currently the enugu longitude and latitude
         */
         
-                var $latitude = 6.458366, 
-                    $longitude = 7.546389,
+                var $latitude = 5.0165336, 
+                    $longitude = 7.9511593,
                     $map_zoom = 15 /* ZOOM SETTING */
 
         //we define here the style of the map
@@ -49,15 +49,12 @@
                     styles: style
                 }
 
-       var map = new google.maps.Map(document.getElementById('map'), {
-        mapTypeControl: false,
-        center: {lat: 5.0165336, lng: 7.9511593},
-        zoom: 13
-      });
+       
 
       //inizialize the map by calling the google.map object 
-       // var map = new google.maps.Map(document.getElementById('myMap'), map_options);
+        var map = new google.maps.Map(document.getElementById('myMap'), map_options);
 
+        // console.log(map,"Map has been called")
         //this responds to click of the button in the prdic area of the map
         $(document).on( "click", "#createmap", function() {
             new AutocompleteDirectionsHandler(map);
@@ -160,7 +157,6 @@
           $('#dispalymaperror').html('');
           //the result of the selected place in the dropdown is passed to a place variable
           var place = autocomplete.getPlace();
-
 
           //
           //in the list of states that rideon is functioning. It also tell
@@ -265,9 +261,9 @@
               'dataType': "json",
               "async": true,
               "crossDomain": true,
-              "url": "google",
+              "url": "distance/matrix",
               "method": "GET",
-              "data":{'link':"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:"+me.originPlaceId+"&destinations=place_id:"+me.destinationPlaceId+"&region=ng&units=metric&key=AIzaSyCQLAPdoU7dhdhdyfgsjjs",
+              "data":{'link':"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:"+me.originPlaceId+"&destinations=place_id:"+me.destinationPlaceId+"&region=ng&units=metric&key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s",
                       'destination_state':me.destinationstate,
                       'origin_state':me.originstate,
                       'origin_location':$('#origin-input').val(),
@@ -281,8 +277,11 @@
 
           $.ajax(settings).done(function (response) {
               //console.log(response);
+
               if (response.status == 'success') {
-                $('#dispalymaperror').html(me.successMessages('Succesful Enquiry',response.content));
+                
+                $('#ematrix').html(me.successMessages(response.pickup,response.destination,response.distance_text,response.min_ride_price,response.duration_text));
+                 $('#dmatrix').modal('show');
               }else{
                  $('#dispalymaperror').html(me.failureMessages('error ::',response.content));
               }
@@ -323,11 +322,13 @@
 
 
       // Renders  success message
-      AutocompleteDirectionsHandler.prototype.successMessages = function(title, message) {
-        var word = '<div class="alert success-icon icon light-bg" role="alert">'+
-                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                    '<i class="fa fa-lg fa-thumbs-o-up"></i>' +title+' : '+ message +' '+
-                    '</div>';
+      AutocompleteDirectionsHandler.prototype.successMessages = function(pickup, destination, distance_text, min_ride_price, duration_text) {
+        var word ='<h1>Pick Up From!</h1>'+
+                            '<p>'+pickup+'</p>'+
+                            '<h1>To!</h1>'+
+                            '<p>'+destination+'</p>'+
+                           '<h3 class="cupon-pop">Price: ₦'+min_ride_price+'</h3>';
+                         
             return word;
       }
 
@@ -340,6 +341,3 @@
                     '</div>';
             return word;
       }
-
-
-  

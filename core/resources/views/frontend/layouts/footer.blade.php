@@ -74,11 +74,28 @@
                   </div>
                 </div>
         </div>
+
+          <div class="modal fade" id="dmatrix"  tabindex="-1"  aria-labelledby="formModalLabel" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label=""><span>CLOSE</span></button>
+                     </div>
+          
+                    <div class="modal-body">
+                          <div class="thank-you-pop">
+                            <img src="{{asset('assets/frontend/images/correct.png')}}" alt="">
+                            <p id="ematrix"></p>
+                            
+                          </div>
+                    </div>
+                  </div>
+                </div>
+        </div>
    
-  
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s&libraries=places"> 
-  </script>
-    <script src="{{asset('assets/frontend/js/google_map.js')}}"></script>
+
+   
+
   
 
     <script src="{{asset('assets/frontend/vendor/jquery/jquery.min.js')}}"></script>
@@ -119,6 +136,11 @@
     <!--Main-->
     <script src="{{asset('assets/frontend/js/main.js')}}"></script>
 
+      <!-- Loads up the google google map with places library -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCjsgA6B-3chmgDvdRGiy1ZOsTg4900s&libraries=places&callback=initMap"  async defer></script>
+
+    <script src="{{asset('assets/frontend/js/google_map.js')}}"></script>
+
 
         <script>
                 @if (Session::has('success'))
@@ -132,17 +154,7 @@
                 @endif
         </script>
 
-        <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-12345678-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-     -->
+      
   </body>
 </html>
 

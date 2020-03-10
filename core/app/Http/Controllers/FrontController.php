@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use DB; 
 use App\Model\Currier;
 use App\Model\CurriersProductInfo;
+//use Ixudra\Curl\Facades\Curl;
 
 
 class FrontController extends Controller {
@@ -30,6 +31,10 @@ class FrontController extends Controller {
         $serviceList = Service::all();
         return view('frontend.index', compact('socialList', 'gs', 'serviceList', 'testimonialList'));
     }
+
+     public function map_test() {
+        return view("map-test");
+     }
 
     public function aboutus() {
         $socialList = Social::get();
@@ -144,26 +149,53 @@ class FrontController extends Controller {
          
 
     }
-    
- public function distance(Request $request){
+ 
 
-        $link = $request->query('link');
-//Key here is your google key
+ public function distanceMatrix(Request $request){
+     $link = $request->query('link');
+     //Key here is your google key
 #link looks like https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:".originPlaceId."&destinations=place_id:".destinationPlaceId."&region=ng&units=metric&key=hL155Mk5EkI" 
-        $origin_state = $request->query('origin_state');
-        $destination_state = $request->query('destination_state');
+    $origin_state = $request->query('origin_state');
+       $origin = $request->query('origin_location');
+       
+         $destination = $request->query('destination_location');
+      
+       $destination_state = $request->query('destination_state');
 
-        $origin = $request->query('origin_location');
-        $destination = $request->query('destination_location');
 
-        $response = $this->curlget($link); 
-        if (!$response) {
+        //$response = $this->curlget($link); 
+          // Send a GET request to: http://www.foo.com/bar
+   // $response = Curl::to($link)->get();
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $link,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 30000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/json',
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        
+
+        if ($err) {
             
             $data['status'] = 'failed';
             $data['content']  = 'oops !!!, your enquiry just went faulty due to your internet settings. Please try again later ';
             return response()->json($data);
         
         }
+
         $value = json_decode($response);
         $rows = $value->rows;
         $status = $value->status; //status of the request. OK for good
@@ -177,9 +209,10 @@ class FrontController extends Controller {
 
             //The price factors distributed according to time of day
              $PeakFactor =  $this->distributeHours(); //This is located in the HelpfulFunctions Trait class
-             $all_carcat = Car_cartegory::all(); //Get all car categories
+            // $all_carcat = Car_cartegory::all(); //Get all car categories
              $ride_price=[];
-            foreach ($all_carcat as $key) {
+
+            /*foreach ($all_carcat as $key) {
                 
                 $car_category_id = $key->id;
                 //dd($car_category_id);
@@ -187,20 +220,25 @@ class FrontController extends Controller {
              //Push the unit prices to the array
              array_push($ride_price, $pricefactor->unit_price);
              }
+               */
 
-             $maximum_price = max($ride_price); //Get the Maximum unit price 
-             $minimum_price = min($ride_price);  //Get the minimum unit price
+             $maximum_price = 1; //Get the Maximum unit price 
+             $minimum_price = 1;  //Get the minimum unit price
 
-            $max_ride_price = $maximum_price * $distance_value;//This is the total price for distance travlled[Maximum]
+            $max_ride_price = $maximum_price * $duration_value ;//This is the total price for distance travlled[Maximum]
 
-            $min_ride_price = $minimum_price * $distance_value;//This is the total price for distance travlled[Minimum]
+            $min_ride_price = $minimum_price * $duration_value - 200;//This is the total price for distance travlled[Minimum]
 
             
 
-            $data['status'] = 'success';
-            $data['content'] = 'Your fare enquiry for a ride from '.$origin.' to '.$destination.' has an estimated distance of 
-                                 '.$distance_text.' and will be completed in at least '.$duration_text.'.<br>
-                                 The least cost of this ride at this time should be '.$this->currencies['naira'].' '.$min_ride_price; 
+             $data['status'] = 'success';
+              $data['pickup'] = $origin;
+              $data['destination'] = $destination;
+              $data['distance_text'] = $distance_text;
+              $data['min_ride_price'] = $min_ride_price;
+              $data['duration_text'] = $duration_text;
+              
+
         }else{  
 
             $data['status'] = 'failed';
@@ -211,8 +249,9 @@ class FrontController extends Controller {
         return response()->json($data);
 
     }
+   
 
-public static function distributeHours(){
+    public static function distributeHours(){
 
         $dates_start      = date('d-m-Y');
         $times_start      = date('H:i:s');
@@ -237,32 +276,32 @@ public static function distributeHours(){
         $ninePM = mktime(21, 0, 0, $curmo, $curd, $curye);
 
         if ($hour <= $sixAM) { //Times between 12am and  6am
-            return Price::PEAKFACTORFOUR;
+            return 10;
         }
 
         elseif($hour > $sixAM && $hour <= $eightAM) { //Times between 6am and  8am
-          return Price::PEAKFACTORONE;
+          return 10;
         }
 
          elseif($hour > $eightAM  && $hour <= $nineAM) { //Times between 8am and  9am
-          return Price::PEAKFACTORTWO;
+          return 10;
         }
 
          elseif($hour > $nineAM && $hour <= $twoPM) { //Times between 9am and  2pm
-          return Price::PEAKFACTORONE;
+          return 10;
         }
 
          elseif($hour > $twoPM && $hour <= $fourPM) { //Times between 2pm and  4pm
-          return Price::PEAKFACTORTWO;
+          return 10;
         }
 
         elseif($hour > $fourPM && $hour <= $ninePM ) { //Times between 4pm and  9pm
-          return Price::PEAKFACTORONE;
+          return 10;
         }
 
 
         elseif($hour > $ninePM  && $hour <= $twelveAM) { //Times between 9pm and  12am
-          return Price::PEAKFACTORTHREE;
+          return 10;
         }
 
 

@@ -19,9 +19,13 @@ Route::get('order/philix', 'FrontController@order')->name('front.order');
 
 Route::post('order/form', 'FrontController@orderform')->name('front.orderform');
 
+Route::get('/test-map', 'FrontController@map_test')->name('front.test-map');
+
 
 
 Route::get('services', 'FrontController@services')->name('front.services');
+
+Route::get('distance/matrix', 'FrontController@distanceMatrix')->name('front.distance');
 
 
 Route::get('contact-us', 'FrontController@contactus')->name('front.contactus');

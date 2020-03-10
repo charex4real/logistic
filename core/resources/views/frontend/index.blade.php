@@ -3,7 +3,7 @@
 @include('frontend/layouts/slider')
 @include('frontend/layouts/home')
 
-@include('frontend/layouts/map1')
+@include('frontend/layouts/map')
 @include('frontend/layouts/search')
 @include('frontend/layouts/top')
 
