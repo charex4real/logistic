@@ -87,22 +87,51 @@ class FrontController extends Controller {
 
 
     public function order(Request $request) {
-
-        $testimonialList = Testimonial::all();
+       
+        $price = $request->price;
+        $receiver_address = $request->receiver_address;
+       $sender_address = $request->sender_address;
+        //session(['data' => $data]);
+        //dd($data);
+        $curriers = Currier::get();
+       
         $socialList = Social::get();
         $gs = GeneralSetting::first();
-        $serviceList = Service::all();
+        
          $branchList = Branch::where([['status', 'Active']])->get();
         $courierTypeList = CourierType::where('status','Active')->get();
-        return view('frontend.order', compact('socialList', 'gs', 'serviceList', 'testimonialList', 'branchList', 'courierTypeList'));
+        // $data = request()->post();
+
+        return view('frontend.order', compact( 'price', 'socialList', 'gs', 'branchList', 'courierTypeList', 'curriers', 'sender_address', 'receiver_address'));
         
     }
+
+
+
+    public function orderMenu(Request $request) {
+      
+        $curriers = Currier::get();
+       
+        $socialList = Social::get();
+        $gs = GeneralSetting::first();
+        
+         $branchList = Branch::where([['status', 'Active']])->get();
+        $courierTypeList = CourierType::where('status','Active')->get();
+        // $data = request()->post();
+
+        return view('frontend.order1', compact('socialList', 'gs', 'branchList', 'courierTypeList', 'curriers'));
+        
+    }
+
+
+
 
 
     public function orderform(Request $request) {
 
        $request->validate([
             'sender_name' => 'required|max:50',
+            'currier_type' => 'required|max:50',
             'area_code' => 'required|max:100',
             'sender_phone' => 'required|max:50',
             'receiver_name' => 'required|max:50',
@@ -154,7 +183,7 @@ class FrontController extends Controller {
  public function distanceMatrix(Request $request){
      $link = $request->query('link');
      //Key here is your google key
-#link looks like https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:".originPlaceId."&destinations=place_id:".destinationPlaceId."&region=ng&units=metric&key=hL155Mk5EkI" 
+    #link looks like https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=place_id:".originPlaceId."&destinations=place_id:".destinationPlaceId."&region=ng&units=metric&key=hL155Mk5EkI" 
     $origin_state = $request->query('origin_state');
        $origin = $request->query('origin_location');
        

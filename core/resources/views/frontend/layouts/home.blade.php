@@ -2,7 +2,7 @@
 				<div class="container container-lg py-5 my-5">
 					<div class="row justify-content-center">
 						<div class="col-xl-9 text-center">
-							<h2 class="font-weight-bold text-11 appear-animation" data-appear-animation="fadeInUpShorter">WELCOME TO ARKLOGISTICS </h2>
+							<h2 class="font-weight-bold text-11 appear-animation" data-appear-animation="fadeInUpShorter">WELCOME TO ARK LOGISTICS </h2>
 							<p class="line-height-9 text-4 opacity-9 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">We know how important it is for the success of your business to have your goods delivered to your customers in a timely manner, and that's why we are here. We are not just another logistics company, we are here to be your link to happiness. By delivering your goods and items to your customers in a timely manner and at an affordable price, we are here to ensure that your business thrives.</p>
 						</div>
 					</div>

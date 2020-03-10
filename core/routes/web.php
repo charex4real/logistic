@@ -15,7 +15,9 @@ Route::get('/', 'FrontController@index')->name('front.index');
 
 Route::get('about', 'FrontController@aboutus')->name('front.aboutus');
 
-Route::get('order/philix', 'FrontController@order')->name('front.order');
+Route::get('order/menu', 'FrontController@orderMenu')->name('front.orderMenu');
+
+Route::post('order/matrix', 'FrontController@order')->name('front.order');
 
 Route::post('order/form', 'FrontController@orderform')->name('front.orderform');
 

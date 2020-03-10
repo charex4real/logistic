@@ -62,9 +62,8 @@
 
     <!-- Head Libs -->
     <script src="{{asset('assets/frontend/vendor/modernizr/modernizr.min.js')}}"></script>
-    <!-- for font awesome -->
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
    <!-- jquery js -->
 
     <!--jQuery JS-->
@@ -150,55 +149,6 @@
     border:0px;
 }
 
-/*sticky social medial design */
-
-.icon-bar {
-  position: fixed;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.icon-bar a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  transition: all 0.3s ease;
-  color: white;
-  font-size: 20px;
-}
-
-.icon-bar a:hover {
-  background-color: #000;
-}
-
-.facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-.google {
-  background: #dd4b39;
-  color: white;
-}
-
-.linkedin {
-  background: #007bb5;
-  color: white;
-}
-
-.youtube {
-  background: #bb0000;
-  color: white;
-}
-
-
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map.*/
      
@@ -278,13 +228,13 @@
                             </a>
                           
                           </li>
+
                            <li class="dropdown">
-                            <a id="order" class="dropdown-item dropdown-toggle" href="{{ route('front.orderMenu') }}">
+                            <a id="order" class="dropdown-item dropdown-toggle" href="{{ route('front.order') }}">
                               Order
                             </a>
                           </li>
 
-                          
                           <li class="dropdown">
                             <a id="services" class="dropdown-item dropdown-toggle" href="{{ route('front.services') }}">
                               Services

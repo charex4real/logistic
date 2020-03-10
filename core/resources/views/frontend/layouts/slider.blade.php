@@ -46,7 +46,7 @@
 									data-lineheight="['26','26','26','26']"
 									data-textAlign="['left','left','left','center']">Click below to get started.</div>
 
-								<a class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded" data-toggle="modal" data-target="#formModal"  href="#"
+								<a  href="#mapsection" class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded"  
 									
 									data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
 									data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
@@ -100,8 +100,8 @@
 									<br><br>
 							
 
-								<a class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded" href="#"
-									data-toggle="modal" data-target="#formModal"
+								<a href="#mapsection" class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded" 
+									
 									data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
 									data-x="center" data-hoffset="['170','170','70','0']"
 									data-y="center" data-voffset="['65','65','65','65']"

@@ -1,4 +1,4 @@
-<section class="section section-height-2 border-0 mt-5 mb-0 pt-5">
+<section class="section section-height-2 border-0 mt-5 mb-0 pt-5" id="mapsection">
 	<div class="container py-2">
 <div class="row" >
 	<div class="col-lg-6">
@@ -27,7 +27,7 @@
 </div>
 
 <div id="dispalymaperror">
-	gg
+
 </div>
 		
 	

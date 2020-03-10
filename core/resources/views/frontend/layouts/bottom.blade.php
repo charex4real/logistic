@@ -9,7 +9,7 @@
                             </div>
                             <div class="col-md-3 col-lg-3">
                                 <div class="call-to-action-btn">
-                                    <a href="#" target="_blank" class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3">Get Started Now</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="top: -40px; left: 70%;"></span>
+                                    <a href="#mapsection" target="_blank" class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3">Get Started Now</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="top: -40px; left: 70%;"></span>
                                 </div>
                             </div>
                         </div>

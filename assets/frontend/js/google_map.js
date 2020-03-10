@@ -281,7 +281,17 @@
               if (response.status == 'success') {
                 
                 $('#ematrix').html(me.successMessages(response.pickup,response.destination,response.distance_text,response.min_ride_price,response.duration_text));
+                  $("#sender_address").val(response.pickup);
+                  $("#receiver_address").val(response.destination);
+                  $("#price").val(response.min_ride_price);
+                //$('#dmatrix').modal('show');
+
+                setInterval(function(){ 
                  $('#dmatrix').modal('show');
+
+                 }, 3000);
+
+
               }else{
                  $('#dispalymaperror').html(me.failureMessages('error ::',response.content));
               }
@@ -323,10 +333,10 @@
 
       // Renders  success message
       AutocompleteDirectionsHandler.prototype.successMessages = function(pickup, destination, distance_text, min_ride_price, duration_text) {
-        var word ='<h1>Pick Up From!</h1>'+
-                            '<p>'+pickup+'</p>'+
-                            '<h1>To!</h1>'+
-                            '<p>'+destination+'</p>'+
+        var word ='<h2>Pick Up From!</h2>'+
+                            '<p style="color: #3E4095">'+pickup+'</p>'+
+                            '<h2>To!</h2>'+
+                            '<p style="color: #3E4095">'+destination+'</p>'+
                            '<h3 class="cupon-pop">Price: ₦'+min_ride_price+'</h3>';
                          
             return word;
